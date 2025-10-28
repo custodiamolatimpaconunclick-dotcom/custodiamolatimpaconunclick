@@ -87,6 +87,16 @@
       text-align: center;
       margin-top: 2rem;
     }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .media-item {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
     footer {
       background: #2a6049;
       color: white;
@@ -105,7 +115,9 @@
 
   <nav>
     <a href="#progetto">Il progetto</a>
+    <a href="#avvisi">Avvisi</a>
     <a href="#mappa">Mappa</a>
+    <a href="#galleria">Galleria</a>
     <a href="#contatti">Contatti</a>
   </nav>
 
@@ -120,6 +132,11 @@
       L’obiettivo è valorizzare la memoria, la biodiversità e il patrimonio paesaggistico di questo territorio unico,
       raccogliendo storie, immagini e testimonianze che restituiscano la ricchezza del suo paesaggio naturale e culturale.
     </p>
+  </section>
+
+  <section id="avvisi">
+    <h2>Avvisi e comunicazioni</h2>
+    <p>In questa sezione saranno pubblicati aggiornamenti, eventi e comunicazioni relative al progetto.</p>
   </section>
 
   <section id="mappa">
@@ -140,11 +157,24 @@
     </div>
   </section>
 
+  <section id="galleria">
+    <h2>Galleria multimediale</h2>
+    <p>In questa sezione saranno caricati video, fotografie e materiali prodotti durante le attività del progetto.</p>
+
+    <div class="media-grid">
+      <!-- Inserisci qui le tue immagini o video -->
+      <!-- Esempio:
+      <div class="media-item"><img src="foto1.jpg" alt="Descrizione"></div>
+      <div class="media-item"><video controls><source src="video1.mp4" type="video/mp4"></video></div>
+      -->
+    </div>
+  </section>
+
   <section id="contatti">
     <h2>Contatti</h2>
     <p>
       Per informazioni sul progetto o per partecipare alla mappatura:<br>
-      📧 <a href="mailto:custodiamolatimpaconunclik@gmail.com">custodiamolatimpaconunclik@gmail.com</a>
+      📧 <a href="mailto:custodiamolatimpaconunclick@gmail.com">custodiamolatimpaconunclick@gmail.com</a>
     </p>
   </section>
 
