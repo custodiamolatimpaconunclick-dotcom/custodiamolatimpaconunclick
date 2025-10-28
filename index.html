@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custodiamo la Timpa con un click</title>
+  <meta name="description" content="Costruiamo insieme la mappa dei luoghi e dei racconti della Timpa di Acireale e dei suoi dintorni. Un progetto partecipativo per custodire la memoria e il paesaggio.">
+  <meta name="author" content="Università di Catania">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9f8;
+    }
+    header {
+      background: linear-gradient(90deg, #2a6049, #4b9b7d);
+      color: white;
+      padding: 2.5rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      max-width: 800px;
+      margin: auto;
+    }
+    header p {
+      font-size: 1.1rem;
+      margin-top: 0.6rem;
+      font-weight: 400;
+    }
+    nav {
+      background: white;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #2a6049;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #4b9b7d;
+    }
+    section {
+      max-width: 1000px;
+      margin: 3rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    h2 {
+      color: #2a6049;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+    }
+    p {
+      margin-bottom: 1.2rem;
+    }
+    .btn {
+      display: inline-block;
+      background: #2a6049;
+      color: white;
+      padding: 0.8rem 1.4rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #4b9b7d;
+    }
+    .qr-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    footer {
+      background: #2a6049;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Custodiamo la Timpa con un click</h1>
+    <p>Costruiamo insieme la mappa dei luoghi e dei racconti della Timpa e dei suoi dintorni</p>
+  </header>
+
+  <nav>
+    <a href="#progetto">Il progetto</a>
+    <a href="#mappa">Mappa</a>
+    <a href="#contatti">Contatti</a>
+  </nav>
+
+  <section id="progetto">
+    <h2>Il progetto</h2>
+    <p>
+      <strong>“Custodiamo la Timpa con un click”</strong> è un’iniziativa partecipativa che invita i cittadini, le scuole e le associazioni
+      a contribuire alla costruzione di una mappa collettiva dei luoghi e dei racconti che caratterizzano
+      la <strong>Timpa di Acireale</strong> e i suoi dintorni.
+    </p>
+    <p>
+      L’obiettivo è valorizzare la memoria, la biodiversità e il patrimonio paesaggistico di questo territorio unico,
+      raccogliendo storie, immagini e testimonianze che restituiscano la ricchezza del suo paesaggio naturale e culturale.
+    </p>
+  </section>
+
+  <section id="mappa">
+    <h2>Esplora la mappa</h2>
+    <p>
+      Clicca sul pulsante qui sotto per accedere alla <strong>mappa interattiva della Timpa di Acireale</strong>, dove potrai esplorare i contributi raccolti
+      e conoscere i luoghi raccontati dalla comunità:
+    </p>
+    <p style="text-align:center;">
+      <a class="btn" href="https://tlweb.it/unict/progetti/acireale/mappatura" target="_blank">
+        🌍 Vai alla mappa interattiva
+      </a>
+    </p>
+
+    <div class="qr-container">
+      <h3>Oppure scansiona il QR Code</h3>
+      <div id="qrcode"></div>
+    </div>
+  </section>
+
+  <section id="contatti">
+    <h2>Contatti</h2>
+    <p>
+      Per informazioni sul progetto o per partecipare alla mappatura:<br>
+      📧 <a href="mailto:info@unict.it">info@unict.it</a>
+    </p>
+  </section>
+
+  <footer>
+    © 2025 – Custodiamo la Timpa con un click<br>
+    Progetto realizzato con il supporto dell’Università di Catania
+  </footer>
+
+  <script>
+    new QRCode(document.getElementById("qrcode"), {
+      text: "https://tlweb.it/unict/progetti/acireale/mappatura",
+      width: 128,
+      height: 128,
+      colorDark: "#2a6049",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  </script>
+</body>
+</html>
