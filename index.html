@@ -13,7 +13,6 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 
-  <!-- Dati strutturati corretti -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,7 +33,6 @@
       background-color: #f8f9f8;
     }
 
-    /* Skip link per navigazione tastiera */
     .skip-link {
       position: absolute;
       left: -9999px;
@@ -99,15 +97,9 @@
       outline: none;
     }
 
-    /* Focus visivo per tastiera */
-    a:focus, button:focus {
-      outline: 3px solid #4b9b7d;
-      outline-offset: 2px;
-    }
+    a:focus, button:focus { outline: 3px solid #4b9b7d; outline-offset: 2px; }
 
-    main {
-      display: block;
-    }
+    main { display: block; }
 
     section {
       max-width: 1000px;
@@ -118,11 +110,7 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
 
-    h2 {
-      color: #2a6049;
-      margin-bottom: 1rem;
-      font-size: 1.6rem;
-    }
+    h2 { color: #2a6049; margin-bottom: 1rem; font-size: 1.6rem; }
 
     p { margin-bottom: 1.2rem; }
 
@@ -137,9 +125,7 @@
       transition: 0.3s;
     }
 
-    .btn:hover, .btn:focus {
-      background: #4b9b7d;
-    }
+    .btn:hover, .btn:focus { background: #4b9b7d; }
 
     .qr-container {
       text-align: center;
@@ -158,6 +144,20 @@
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
 
+    /* Mini-galleria verticale per eventi */
+    .event-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .event-item img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
     footer[role="contentinfo"] {
       background: #2a6049;
       color: white;
@@ -170,7 +170,7 @@
 </head>
 
 <body>
-  <a href="#progetto" class="skip-link">Salta al contenuto principale</a>
+  <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
 
   <header role="banner">
     <h1>Custodiamo la Timpa con un click</h1>
@@ -180,6 +180,7 @@
   <nav role="navigation" aria-label="Navigazione principale">
     <a href="#progetto">Il progetto</a>
     <a href="#avvisi">Avvisi</a>
+    <a href="#eventi">Eventi</a>
     <a href="#mappa">Mappa</a>
     <a href="#galleria">Galleria</a>
     <a href="#contatti">Contatti</a>
@@ -202,6 +203,30 @@
     <section id="avvisi">
       <h2>Avvisi e comunicazioni</h2>
       <p>In questa sezione saranno pubblicati aggiornamenti, eventi e comunicazioni relative al progetto.</p>
+      <ul>
+        <li>19/11/25 ore 17:30 – Nella sede del Consorzio delle Acque di Santa Tecla, via Pereto 9, si terrà un incontro di presentazione dell'APP con gli artisti che operano sul territorio di Acireale.</li>
+        <li>27/11/25 – Nella scuola media Paolo Vasta di Acireale si terrà un incontro di presentazione dell'APP con i docenti, il personale scolastico e gli operatori del settore istruzione.</li>
+      </ul>
+    </section>
+
+    <section id="eventi">
+      <h2>Eventi già avvenuti</h2>
+      <p>Di seguito alcuni eventi già realizzati nell'ambito del progetto:</p>
+
+      <!-- Mini-galleria verticale -->
+      <div class="event-gallery">
+        <div class="event-item">
+          <img src="incontro_produttori1.jpg" alt="Incontro di presentazione APP con i produttori che operano sul territorio della Timpa">
+        </div>
+        <div class="event-item">
+          <img src="incontro_produttori2.jpg" alt="Partecipanti all'incontro di presentazione APP">
+        </div>
+        <div class="event-item">
+          <img src="incontro_produttori3.jpg" alt="Discussione con i produttori locali">
+        </div>
+      </div>
+
+      <p>Incontro di presentazione APP tenutosi in data 4/11/25 con i produttori che operano sul territorio della Timpa e dintorni.</p>
     </section>
 
     <section id="mappa">
@@ -233,10 +258,6 @@
 
       <div class="media-grid">
         <!-- Inserisci qui le tue immagini o video -->
-        <!-- Esempio:
-        <div class="media-item"><img src="foto1.jpg" alt="Panorama della Timpa di Acireale"></div>
-        <div class="media-item"><video controls><source src="video1.mp4" type="video/mp4"></video></div>
-        -->
       </div>
     </section>
 
@@ -266,3 +287,4 @@
   </script>
 </body>
 </html>
+
