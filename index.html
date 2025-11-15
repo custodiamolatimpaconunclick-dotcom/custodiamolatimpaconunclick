@@ -4,16 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Custodiamo la Timpa con un click</title>
-  <meta name="description" content="Costruiamo insieme la mappa dei luoghi e dei racconti della Timpa di Acireale e dei suoi dintorni. Un progetto partecipativo per custodire la memoria e il paesaggio.">
+  
+  <meta name="description" content="Costruiamo insieme la mappa dei luoghi e dei racconti della Timpa di Acireale. Un progetto partecipativo per custodire memoria e paesaggio.">
   <meta name="author" content="Università di Catania">
 
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="favicon.png">
 
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <!-- JS QRCode -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js" defer></script>
 
 <style>
 /* RESET */
@@ -107,10 +111,11 @@ h2 {
   gap: 1.5rem;
 }
 
-.media-item {
+.media-item img {
+  width: 100%;
+  display: block;
   border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  object-fit: cover;
 }
 
 /* FOOTER */
@@ -122,10 +127,7 @@ footer {
   margin-top: 3rem;
 }
 
-/* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-/* =========== NUOVA SEZIONE AVVISI CON CALENDARIO ========= */
-/* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
-
+/* CALENDARIO */
 .calendar-container {
   margin-top: 2rem;
   background: #ffffff;
@@ -154,7 +156,7 @@ footer {
   color: #2a6049;
 }
 
-/* Giorni con evento */
+/* GIORNI CON EVENTI */
 .event-day {
   background: #2a6049;
   color: white !important;
@@ -165,7 +167,6 @@ footer {
   background: #4b9b7d;
 }
 
-/* Eventi sotto */
 .upcoming-events {
   margin-top: 2rem;
 }
@@ -183,6 +184,10 @@ footer {
   color: #2a6049;
   margin-bottom: 0.5rem;
 }
+
+/* Miglior contrasto per i link footer */
+footer a { color: #e0fff1; }
+
 </style>
 </head>
 
@@ -190,12 +195,12 @@ footer {
 
 <a href="#progetto" class="skip-link">Salta al contenuto principale</a>
 
-<header role="banner">
+<header role="banner" aria-label="Immagine panoramica della Timpa di Acireale">
   <h1>Custodiamo la Timpa con un click</h1>
   <p>Costruiamo insieme la mappa dei luoghi e dei racconti della Timpa e dei suoi dintorni</p>
 </header>
 
-<nav role="navigation">
+<nav role="navigation" aria-label="Menu principale">
   <a href="#progetto">Il progetto</a>
   <a href="#avvisi">Avvisi</a>
   <a href="#eventi">Eventi</a>
@@ -206,7 +211,6 @@ footer {
 
 <main>
 
-<!-- ====================== IL PROGETTO ====================== -->
 <section id="progetto">
   <h2>Il progetto</h2>
   <p>
@@ -215,15 +219,10 @@ footer {
   </p>
 </section>
 
-<!-- ========================================================= -->
-<!-- ================= SEZIONE AVVISI AGGIORNATA ============= -->
-<!-- ========================================================= -->
-
 <section id="avvisi">
   <h2>Avvisi e comunicazioni</h2>
   <p>Consulta il calendario per visualizzare le prossime attività in programma.</p>
 
-  <!-- CALENDARIO -->
   <div class="calendar-container">
     <div class="calendar-header">
       <h3>Novembre 2025</h3>
@@ -233,56 +232,29 @@ footer {
 
       <div>Lu</div><div>Ma</div><div>Me</div><div>Gi</div><div>Ve</div><div>Sa</div><div>Do</div>
 
-      <!-- Spazi vuoti (1 novembre è sabato) -->
       <div></div><div></div><div></div><div></div><div></div>
 
-      <!-- Giorni -->
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
-      <div>6</div>
-      <div>7</div>
-      <div>8</div>
-      <div>9</div>
-      <div>10</div>
-      <div>11</div>
-      <div>12</div>
-      <div>13</div>
-      <div>14</div>
-      <div>15</div>
-      <div>16</div>
-      <div>17</div>
-      <div>18</div>
+      <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+      <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
+      <div>15</div><div>16</div><div>17</div><div>18</div>
 
-      <!-- GIORNI CON EVENTI -->
       <div class="event-day" data-event="event-19">19</div>
 
-      <div>20</div>
-      <div>21</div>
-      <div>22</div>
-      <div>23</div>
-      <div>24</div>
-      <div>25</div>
-      <div>26</div>
+      <div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
 
       <div class="event-day" data-event="event-27">27</div>
 
-      <div>28</div>
-      <div>29</div>
-      <div>30</div>
+      <div>28</div><div>29</div><div>30</div>
     </div>
   </div>
 
-  <!-- EVENTI FUTURI -->
   <div class="upcoming-events">
     <h3>Prossimi eventi</h3>
 
     <div id="event-19" class="event-card">
       <h4>19/11/2025 – Presentazione APP con gli artisti</h4>
       <p>
-        Ore 17:30, presso il <strong>Consorzio delle Acque di Santa Tecla</strong>.  
+        Ore 17:30, presso il <strong>Consorzio delle Acque di Santa Tecla</strong>.<br>
         Presentazione dell'app agli artisti che operano sul territorio.
       </p>
     </div>
@@ -298,10 +270,6 @@ footer {
   </div>
 </section>
 
-<!-- ========================================================= -->
-<!-- ===================== SEZIONE EVENTI ==================== -->
-<!-- ========================================================= -->
-
 <section id="eventi">
   <h2>Eventi</h2>
   <p>In questa sezione trovi gli eventi già svolti nell’ambito del progetto.</p>
@@ -311,33 +279,29 @@ footer {
     <p>Incontro dedicato ai produttori che operano sul territorio della Timpa.</p>
 
     <div class="media-grid">
-      <div class="media-item"><img src="evento-produttori1.jpg" alt=""></div>
-      <div class="media-item"><img src="evento-produttori2.jpg" alt=""></div>
+      <div class="media-item"><img src="evento-produttori1.jpg" alt="Foto dell'incontro con i produttori - immagine 1" loading="lazy"></div>
+      <div class="media-item"><img src="evento-produttori2.jpg" alt="Foto dell'incontro con i produttori - immagine 2" loading="lazy"></div>
     </div>
   </div>
 </section>
 
-<!-- ====================== MAPPA ====================== -->
 <section id="mappa">
   <h2>Mappa</h2>
   <p>Clicca per accedere alla mappa interattiva della Timpa di Acireale.</p>
 
   <p style="text-align:center;">
-    <a class="btn" href="https://tlweb.it/unict/progetti/acireale/mappatura" target="_blank">🌍 Vai alla mappa interattiva</a>
+    <a class="btn" href="https://tlweb.it/unict/progetti/acireale/mappatura" target="_blank" rel="noopener noreferrer" aria-label="Apri la mappa interattiva in una nuova scheda">🌍 Vai alla mappa interattiva</a>
   </p>
 
-  <div id="qrcode" style="text-align:center; margin-top:2rem;"></div>
+  <div id="qrcode" style="text-align:center; margin-top:2rem;" aria-label="QR Code della mappa"></div>
 </section>
 
-<!-- ===================== GALLERIA ==================== -->
 <section id="galleria">
   <h2>Galleria multimediale</h2>
   <p>Caricheremo presto foto e video delle attività.</p>
-
   <div class="media-grid"></div>
 </section>
 
-<!-- ===================== CONTATTI ==================== -->
 <section id="contatti">
   <h2>Contatti</h2>
   <p>📧 <a href="mailto:custodiamolatimpaconunclick@gmail.com">custodiamolatimpaconunclick@gmail.com</a></p>
@@ -350,32 +314,9 @@ footer {
   Progetto realizzato con il supporto dell’Università di Catania
 </footer>
 
-
 <script>
-new QRCode(document.getElementById("qrcode"), {
-  text: "https://tlweb.it/unict/progetti/acireale/mappatura",
-  width: 128,
-  height: 128,
-  colorDark: "#2a6049",
-  colorLight: "#ffffff",
-  correctLevel: QRCode.CorrectLevel.H
-});
-
-/* CLICK SU GIORNI DEL CALENDARIO → SCROLL ALL EVENTO */
-document.querySelectorAll('.event-day').forEach(day => {
-  day.addEventListener('click', () => {
-    const id = day.getAttribute('data-event');
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      el.style.background = '#e8f3ed';
-      setTimeout(() => { el.style.background = '#fefefe'; }, 800);
-    }
-  });
-});
-</script>
-
-</body>
-</html>
+// QR Code
+document.addEventListener("DOMContentLoaded", () => {
+  new QRCode(document.g
 
 
