@@ -4,189 +4,154 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Custodiamo la Timpa con un click</title>
-  
-  <meta name="description" content="Costruiamo insieme la mappa dei luoghi e dei racconti della Timpa di Acireale. Un progetto partecipativo per custodire memoria e paesaggio.">
+  <meta name="description" content="Costruiamo insieme la mappa dei luoghi e dei racconti della Timpa di Acireale e dei suoi dintorni.">
   <meta name="author" content="Università di Catania">
-
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custodiamo la Timpa – Eventi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f8f9f8;
-      color: #333;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',sans-serif; background:#f8f9f8; color:#333; line-height:1.6; }
+    a { text-decoration:none; color:#2a6049; }
+    header { background:url('sfondosito.jpg') center/cover no-repeat; text-align:center; color:white; padding:4rem 1rem; }
+    header h1 { font-size:2rem; font-weight:800; }
+    header p { font-size:1.1rem; margin-top:0.6rem; }
+    nav { background:white; padding:1rem; text-align:center; position:sticky; top:0; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+    nav a { margin:0 15px; font-weight:600; transition:0.3s; }
+    nav a:hover, nav a:focus { color:#4b9b7d; outline:none; }
+    main { max-width:1000px; margin:3rem auto; padding:0 1rem; }
+    section { background:white; padding:2rem; margin-bottom:3rem; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05); }
+    h2 { color:#2a6049; margin-bottom:1rem; font-size:1.6rem; text-align:center; }
+    p { margin-bottom:1rem; }
+    .btn { display:inline-block; background:#2a6049; color:white; padding:0.8rem 1.4rem; border-radius:8px; font-weight:600; transition:0.3s; }
+    .btn:hover, .btn:focus { background:#4b9b7d; }
 
-    header {
-      background: url('sfondosito.jpg') center/cover no-repeat;
-      text-align: center;
-      color: white;
-      padding: 4rem 1rem;
-    }
+    .media-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
+    .media-item img, .media-item video { width:100%; border-radius:8px; box-shadow:0 3px 8px rgba(0,0,0,0.1); }
 
-    header h1 {
-      font-size: 2rem;
-      font-weight: 800;
-    }
-
-    nav {
-      background: white;
-      padding: 1rem;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #2a6049;
-      font-weight: 600;
-    }
-
-    h2 {
-      text-align: center;
-      color: #2a6049;
-      margin-top: 2rem;
-    }
+    footer { background:#2a6049; color:white; text-align:center; padding:1.5rem; font-size:0.9rem; }
 
     /* Calendario */
-    .calendar-container {
-      max-width: 700px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
+    .calendar-container { max-width:700px; margin:2rem auto; background:white; padding:1.5rem; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); }
+    .calendar-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+    .btn-month { background:#2a6049; color:white; border:none; padding:0.4rem 0.8rem; border-radius:6px; cursor:pointer; }
+    .calendar-title { font-size:1.3rem; font-weight:bold; color:#2a6049; }
+    .calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:0.3rem; text-align:center; }
+    .day-name { font-weight:bold; color:#2a6049; }
+    .calendar-day { padding:0.6rem 0; background:#eef2ef; border-radius:6px; }
+    .calendar-day.event { background:none; color:red; font-weight:bold; border:1px solid red; cursor:pointer; }
 
-    .calendar-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
+    .event-card { max-width:700px; margin:1rem auto; background:white; padding:1.5rem; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); display:none; }
 
-    .btn-month {
-      background: #2a6049;
-      color: white;
-      border: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .calendar-title {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #2a6049;
-    }
-
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 10px;
-      text-align: center;
-    }
-
-    .day-name {
-      font-weight: bold;
-      color: #2a6049;
-    }
-
-    .calendar-day {
-      padding: 10px;
-      background: #eef2ef;
-      border-radius: 8px;
-    }
-
-    .calendar-day.event {
-      background: none !important;
-      color: red !important;
-      font-weight: bold;
-      border: 2px solid red;
-      cursor: pointer;
-    }
-
-    .event-card {
-      max-width: 700px;
-      margin: 1rem auto;
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      display: none;
-    }
-
+    .qr-container { text-align:center; margin-top:2rem; }
   </style>
 </head>
+
 <body>
 
 <header>
-  <h1>Custodiamo la Timpa – Eventi</h1>
-  <p>Calendario degli incontri e attività</p>
+  <h1>Custodiamo la Timpa con un click</h1>
+  <p>Costruiamo insieme la mappa dei luoghi e dei racconti della Timpa e dei suoi dintorni</p>
 </header>
 
 <nav>
-  <a href="index.html#progetto">Il progetto</a>
-  <a href="index.html#avvisi">Avvisi</a>
-  <a href="index.html#mappa">Mappa</a>
-  <a href="index.html#galleria">Galleria</a>
-  <a href="index.html#contatti">Contatti</a>
+  <a href="#progetto">Il progetto</a>
+  <a href="#avvisi">Avvisi</a>
+  <a href="#eventi">Eventi</a>
+  <a href="#mappa">Mappa</a>
+  <a href="#galleria">Galleria</a>
+  <a href="#contatti">Contatti</a>
 </nav>
 
-<h2>Prossimi eventi</h2>
+<main id="main-content">
 
-<!-- LISTA EVENTI (puoi aggiungerli qui) -->
-<ul class="event-list" style="display:none;">
-  <li data-date="2025-11-19" data-title="Incontro di presentazione dell'app" data-desc="19/11/25 ore 17:30 – Sede del Consorzio delle Acque di Santa Tecla." data-img=""></li>
-  <li data-date="2025-11-27" data-title="Presentazione APP alla scuola Paolo Vasta" data-desc="27/11/25 – Incontro con docenti e personale scolastico." data-img=""></li>
-</ul>
+<section id="progetto">
+  <h2>Il progetto</h2>
+  <p><strong>“Custodiamo la Timpa con un click”</strong> è un’iniziativa partecipativa per costruire una mappa collettiva dei luoghi e dei racconti della <strong>Timpa di Acireale</strong> e dei suoi dintorni.</p>
+  <p>Valorizza la memoria, la biodiversità e il patrimonio paesaggistico raccogliendo storie, immagini e testimonianze.</p>
+</section>
 
-<div class="calendar-container">
-  <div class="calendar-header">
-    <button class="btn-month" id="prevMonth">◀</button>
-    <div class="calendar-title" id="calendarTitle"></div>
-    <button class="btn-month" id="nextMonth">▶</button>
+<section id="avvisi">
+  <h2>Avvisi e prossimi eventi</h2>
+
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <button class="btn-month" id="prevMonth">◀</button>
+      <div class="calendar-title" id="calendarTitle"></div>
+      <button class="btn-month" id="nextMonth">▶</button>
+    </div>
+    <div id="calendar" class="calendar-grid"></div>
   </div>
-  <div id="calendar" class="calendar-grid"></div>
-</div>
 
-<div id="event-details"></div>
+  <div id="event-details"></div>
+
+  <!-- Lista eventi -->
+  <ul class="event-list" style="display:none;">
+    <li data-date="2025-11-19" data-title="Incontro di presentazione dell'app" data-desc="Ore 17:30, presso la sede del Consorzio delle Acque di Santa Tecla."></li>
+    <li data-date="2025-11-27" data-title="Presentazione APP alla scuola Paolo Vasta" data-desc="Incontro con docenti e personale scolastico presso la scuola media Paolo Vasta di Acireale."></li>
+  </ul>
+</section>
+
+<section id="eventi">
+  <h2>Eventi già avvenuti</h2>
+  <div class="media-grid">
+    <div class="media-item"><img src="incontro_produttori1.jpg" alt="Incontro con produttori della Timpa"></div>
+    <div class="media-item"><img src="incontro_produttori2.jpg" alt="Partecipanti all'incontro con produttori"></div>
+  </div>
+</section>
+
+<section id="mappa">
+  <h2>Esplora la mappa</h2>
+  <p>Clicca sul pulsante per accedere alla <strong>mappa interattiva della Timpa di Acireale</strong>:</p>
+  <p style="text-align:center;"><a class="btn" href="https://tlweb.it/unict/progetti/acireale/mappatura" target="_blank">🌍 Vai alla mappa interattiva</a></p>
+
+  <div class="qr-container">
+    <h3>Oppure scansiona il QR Code</h3>
+    <div id="qrcode"></div>
+  </div>
+</section>
+
+<section id="galleria">
+  <h2>Galleria multimediale</h2>
+  <div class="media-grid"></div>
+</section>
+
+<section id="contatti">
+  <h2>Contatti</h2>
+  <p>📧 <a href="mailto:custodiamolatimpaconunclick@gmail.com">custodiamolatimpaconunclick@gmail.com</a></p>
+</section>
+
+</main>
+
+<footer>
+  © 2025 – Custodiamo la Timpa con un click<br>
+  Progetto realizzato con il supporto dell’Università di Catania
+</footer>
 
 <script>
+  // QR Code
+  new QRCode(document.getElementById("qrcode"), {
+    text: "https://tlweb.it/unict/progetti/acireale/mappatura",
+    width: 128,
+    height: 128,
+    colorDark: "#2a6049",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+
+  // Eventi
   const eventData = [...document.querySelectorAll('.event-list li')].map(li => ({
     date: li.dataset.date,
     title: li.dataset.title,
-    desc: li.dataset.desc,
-    img: li.dataset.img
+    desc: li.dataset.desc
   }));
 
-  let currentMonth, currentYear;
-
-  function initCalendar() {
-    const today = new Date();
-    currentMonth = today.getMonth();
-    currentYear = today.getFullYear();
-    renderCalendar();
-  }
+  let today = new Date();
+  let currentMonth = today.getMonth();
+  let currentYear = today.getFullYear();
 
   function renderCalendar() {
     const monthNames = ["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"];
@@ -197,65 +162,52 @@
     calendar.innerHTML = "";
 
     dayNames.forEach(d => {
-      const cell = document.createElement("div");
-      cell.className = "day-name";
-      cell.textContent = d;
-      calendar.appendChild(cell);
+      const div = document.createElement("div");
+      div.className="day-name"; div.textContent=d;
+      calendar.appendChild(div);
     });
 
-    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-    const startIndex = firstDay === 0 ? 6 : firstDay - 1;
+    const firstDay = new Date(currentYear,currentMonth,1).getDay();
+    const startIndex = firstDay===0?6:firstDay-1;
+    for(let i=0;i<startIndex;i++){calendar.appendChild(document.createElement("div"));}
 
-    for (let i = 0; i < startIndex; i++) calendar.appendChild(document.createElement("div"));
-
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-    for (let d = 1; d <= daysInMonth; d++) {
-      const cell = document.createElement("div");
-      cell.className = "calendar-day";
-      cell.textContent = d;
-
+    const daysInMonth = new Date(currentYear,currentMonth+1,0).getDate();
+    for(let d=1; d<=daysInMonth; d++){
+      const div = document.createElement("div");
+      div.className="calendar-day"; div.textContent=d;
       const fullDate = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-      const event = eventData.find(e => e.date === fullDate);
-
-      if (event) {
-        cell.classList.add("event");
-        cell.addEventListener("click", () => showEvent(event));
+      const event = eventData.find(e => e.date===fullDate);
+      if(event){
+        div.classList.add("event");
+        div.addEventListener("click", ()=>showEvent(event));
       }
-
-      calendar.appendChild(cell);
+      calendar.appendChild(div);
     }
   }
 
-  function showEvent(event) {
+  function showEvent(event){
     const box = document.getElementById("event-details");
-
-    box.innerHTML = `
-      <div class='event-card' style='display:block;'>
-        <h3>${event.title}</h3>
-        <p><strong>Data:</strong> ${event.date}</p>
-        <p>${event.desc}</p>
-        ${event.img ? `<img src='${event.img}' />` : ''}
-      </div>`;
+    box.innerHTML=`<div class='event-card' style='display:block;'>
+      <h3>${event.title}</h3>
+      <p><strong>Data:</strong> ${event.date}</p>
+      <p>${event.desc}</p>
+    </div>`;
   }
 
-  document.getElementById("prevMonth").addEventListener("click", () => {
+  document.getElementById("prevMonth").addEventListener("click", ()=>{
     currentMonth--;
-    if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+    if(currentMonth<0){ currentMonth=11; currentYear--; }
     renderCalendar();
   });
 
-  document.getElementById("nextMonth").addEventListener("click", () => {
+  document.getElementById("nextMonth").addEventListener("click", ()=>{
     currentMonth++;
-    if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+    if(currentMonth>11){ currentMonth=0; currentYear++; }
     renderCalendar();
   });
 
-  initCalendar();
+  renderCalendar();
 </script>
 
 </body>
 </html>
-
-
-
