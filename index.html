@@ -41,8 +41,10 @@
     .calendar-title { font-size:1.3rem; font-weight:bold; color:#2a6049; }
     .calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:0.3rem; text-align:center; }
     .day-name { font-weight:bold; color:#2a6049; }
-    .calendar-day { padding:0.6rem 0; background:#eef2ef; border-radius:6px; }
+    .calendar-day { padding:0.6rem 0; background:#eef2ef; border-radius:6px; min-height:60px; display:flex; flex-direction:column; justify-content:flex-start; align-items:center; font-size:0.9rem; }
     .calendar-day.event { background:none; color:red; font-weight:bold; border:1px solid red; cursor:pointer; }
+
+    .event-desc { font-size:0.75rem; color:#333; margin-top:4px; }
 
     .event-card { max-width:700px; margin:1rem auto; background:white; padding:1.5rem; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); display:none; }
 
@@ -90,8 +92,8 @@
 
   <!-- Lista eventi -->
   <ul class="event-list" style="display:none;">
-    <li data-date="2025-11-19" data-title="Incontro di presentazione dell'app" data-desc="Ore 17:30, presso la sede del Consorzio delle Acque di Santa Tecla."></li>
-    <li data-date="2025-11-27" data-title="Presentazione APP alla scuola Paolo Vasta" data-desc="Incontro con docenti e personale scolastico presso la scuola media Paolo Vasta di Acireale."></li>
+    <li data-date="2025-11-19" data-title="Incontro di presentazione dell'app" data-desc="Giorno 19/11/25 ore 17:30 nella sede del Consorzio delle Acque di Santa Tecla si terrà un incontro di presentazione dell'app con gli artisti che operano sul territorio di Acireale."></li>
+    <li data-date="2025-11-27" data-title="Presentazione APP alla scuola Paolo Vasta" data-desc="Giorno 27/11/25 nella scuola media Paolo Vasta di Acireale si terrà un incontro di presentazione dell'APP con i docenti, il personale scolastico e gli operatori del settore istruzione."></li>
   </ul>
 </section>
 
@@ -179,6 +181,14 @@
       const event = eventData.find(e => e.date===fullDate);
       if(event){
         div.classList.add("event");
+
+        // Mostra subito la descrizione sotto il numero del giorno
+        const descEl = document.createElement("div");
+        descEl.className="event-desc";
+        descEl.textContent = event.title;
+        div.appendChild(descEl);
+
+        // Popup dettagli al click
         div.addEventListener("click", ()=>showEvent(event));
       }
       calendar.appendChild(div);
