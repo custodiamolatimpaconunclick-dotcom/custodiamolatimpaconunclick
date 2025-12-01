@@ -90,18 +90,34 @@
 
   <div id="event-details"></div>
 
-  <!-- Lista eventi -->
+  <!-- Lista eventi aggiornata -->
   <ul class="event-list" style="display:none;">
-    <li data-date="2025-11-19" data-title="Incontro di presentazione dell'app" data-desc="Giorno 19/11/25 ore 17:30 nella sede del Consorzio delle Acque di Santa Tecla si terrà un incontro di presentazione dell'app con gli artisti che operano sul territorio di Acireale."></li>
-    <li data-date="2025-11-27" data-title="Presentazione APP alla scuola Paolo Vasta" data-desc="Giorno 27/11/25 nella scuola media Paolo Vasta di Acireale si terrà un incontro di presentazione dell'APP con i docenti, il personale scolastico e gli operatori del settore istruzione."></li>
+    <li data-date="2025-11-04" data-title="Presentazione dell'app agli operatori economici" data-desc="Incontro di presentazione dell'app agli operatori economici e ai proprietari dei terreni della Timpa, svolto al Consorzio delle Acque di Santa Tecla."></li>
+
+    <li data-date="2025-11-19" data-title="Presentazione agli artisti del territorio" data-desc="Incontro con gli artisti operanti sul territorio di Acireale, svolto al Consorzio delle Acque di Santa Tecla. Durante l'incontro è emersa la volontà di esplorare i territori alla ricerca di luoghi per possibili percorsi d'arte sulla Timpa."></li>
+
+    <li data-date="2025-11-27" data-title="Presentazione agli insegnanti e operatori scolastici" data-desc="Incontro presso l'Istituto Comprensivo Paolo Vasta. Dopo la presentazione dell'app si è discusso sulle possibili progettualità, tra cui: esplorazione delle aree agricole nel periodo della zagara, passeggiate durante la festa dei fiori, concorso letterario 'La Timpa attraverso i racconti dei nonni'."></li>
   </ul>
 </section>
 
 <section id="eventi">
   <h2>Eventi già avvenuti</h2>
   <div class="media-grid">
-    <div class="media-item"><img src="incontro_produttori1.jpg" alt="Incontro con produttori della Timpa"></div>
-    <div class="media-item"><img src="incontro_produttori2.jpg" alt="Partecipanti all'incontro con produttori"></div>
+    <div class="media-item">
+      <p><strong>4/11/2025 – Incontro di presentazione dell'app</strong><br>
+      Presentazione dell’app agli operatori economici e ai proprietari dei terreni della Timpa, svolto presso il Consorzio delle Acque di Santa Tecla.</p>
+    </div>
+    <div class="media-item">
+      <p><strong>19/11/2025 – Incontro di presentazione dell'app agli artisti</strong><br>
+      Incontro con gli artisti operanti sul territorio di Acireale presso il Consorzio delle Acque di Santa Tecla. Durante l'incontro è emersa la volontà di esplorare i territori alla ricerca di luoghi dove poter realizzare percorsi d'arte sulla Timpa.</p>
+    </div>
+    <div class="media-item">
+      <p><strong>27/11/2025 – Incontro di presentazione dell'app agli insegnanti</strong><br>
+      Incontro tenuto presso l'Istituto Comprensivo Paolo Vasta di Acireale. Dopo la presentazione dell’app si è discusso delle possibili progettualità, tra cui:<br>
+      – Esplorazione delle aree agricole nel periodo della zagara<br>
+      – Passeggiate in occasione della festa dei fiori lungo i sentieri della Timpa<br>
+      – Concorso letterario “La Timpa attraverso i racconti dei nonni”.</p>
+    </div>
   </div>
 </section>
 
@@ -118,7 +134,18 @@
 
 <section id="galleria">
   <h2>Galleria multimediale</h2>
-  <div class="media-grid"></div>
+  <div class="media-grid">
+    <div class="media-item">
+      <a href="https://youtu.be/6hh93bZrAmY?si=s4E9J04Og10VC_U0" target="_blank" class="btn">🎥 Guarda il video racconto sulla Timpa</a>
+    </div>
+    <div class="media-item">
+      <video controls>
+        <source src="Trailer consorzio acque santa tecla" type="video/mp4">
+        Il tuo browser non supporta il tag video.
+      </video>
+      <p><strong>Trailer – Consorzio Acque Santa Tecla</strong></p>
+    </div>
+  </div>
 </section>
 
 <section id="contatti">
@@ -182,13 +209,11 @@
       if(event){
         div.classList.add("event");
 
-        // Mostra subito la descrizione sotto il numero del giorno
         const descEl = document.createElement("div");
         descEl.className="event-desc";
         descEl.textContent = event.title;
         div.appendChild(descEl);
 
-        // Popup dettagli al click
         div.addEventListener("click", ()=>showEvent(event));
       }
       calendar.appendChild(div);
