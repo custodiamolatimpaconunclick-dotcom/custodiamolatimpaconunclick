@@ -74,6 +74,7 @@
 
 <section id="avvisi">
   <h2>Avvisi e prossimi eventi</h2>
+
   <div class="calendar-container">
     <div class="calendar-header">
       <button class="btn-month" id="prevMonth">◀</button>
@@ -82,31 +83,44 @@
     </div>
     <div id="calendar" class="calendar-grid"></div>
   </div>
+
   <div id="event-details"></div>
 
   <ul class="event-list" style="display:none;">
-    <li data-date="2025-11-04" data-title="Presentazione dell'app agli operatori economici" data-desc="Incontro svolto al Consorzio delle Acque di Santa Tecla."></li>
-    <li data-date="2025-11-19" data-title="Presentazione agli artisti del territorio" data-desc="Incontro con artisti operanti sul territorio di Acireale."></li>
-    <li data-date="2025-11-27" data-title="Presentazione agli insegnanti e operatori scolastici" data-desc="Incontro presso l'Istituto Comprensivo Paolo Vasta."></li>
+    <li data-date="2025-11-04" data-title="Presentazione dell'app agli operatori economici" data-desc="Incontro di presentazione dell'app agli operatori economici e ai proprietari dei terreni della Timpa, svolto al Consorzio delle Acque di Santa Tecla."></li>
+
+    <li data-date="2025-11-19" data-title="Presentazione agli artisti del territorio" data-desc="Incontro con gli artisti operanti sul territorio di Acireale, svolto al Consorzio delle Acque di Santa Tecla. Durante l'incontro è emersa la volontà di esplorare i territori alla ricerca di luoghi per possibili percorsi d'arte sulla Timpa."></li>
+
+    <li data-date="2025-11-27" data-title="Presentazione agli insegnanti e operatori scolastici" data-desc="Incontro presso l'Istituto Comprensivo Paolo Vasta. Dopo la presentazione dell'app si è discusso sulle possibili progettualità, tra cui: esplorazione delle aree agricole nel periodo della zagara, passeggiate durante la festa dei fiori, concorso letterario 'La Timpa attraverso i racconti dei nonni'."></li>
   </ul>
 </section>
 
 <section id="eventi">
   <h2>Eventi già avvenuti</h2>
   <div class="media-grid">
-    <div class="media-item"><p><strong>4/11/2025</strong> – Presentazione operatori economici.</p></div>
-    <div class="media-item"><p><strong>19/11/2025</strong> – Presentazione agli artisti.</p></div>
-    <div class="media-item"><p><strong>27/11/2025</strong> – Presentazione agli insegnanti.</p></div>
+    <div class="media-item">
+      <p><strong>4/11/2025 – Incontro di presentazione dell'app</strong><br>
+      Presentazione dell’app agli operatori economici e ai proprietari dei terreni della Timpa, svolto presso il Consorzio delle Acque di Santa Tecla.</p>
+    </div>
+    <div class="media-item">
+      <p><strong>19/11/2025 – Incontro di presentazione dell'app agli artisti</strong><br>
+      Incontro con gli artisti operanti sul territorio di Acireale presso il Consorzio delle Acque di Santa Tecla. Durante l'incontro è emersa la volontà di esplorare i territori alla ricerca di luoghi dove poter realizzare percorsi d'arte sulla Timpa.</p>
+    </div>
+    <div class="media-item">
+      <p><strong>27/11/2025 – Incontro di presentazione dell'app agli insegnanti</strong><br>
+      Incontro tenuto presso l'Istituto Comprensivo Paolo Vasta di Acireale. Dopo la presentazione dell’app si è discusso delle possibili progettualità, tra cui:<br>
+      – Esplorazione delle aree agricole nel periodo della zagara<br>
+      – Passeggiate in occasione della festa dei fiori lungo i sentieri della Timpa per censire le essenze presenti sul territorio<br>
+      – Concorso letterario “La Timpa attraverso i racconti dei nonni”.</p>
+    </div>
   </div>
 </section>
 
 <section id="mappa">
   <h2>Esplora la mappa</h2>
-  <p style="text-align:center;">
-    <a class="btn" href="https://tlweb.it/unict/progetti/acireale/mappatura" target="_blank">
-      🌍 Vai alla mappa interattiva
-    </a>
-  </p>
+  <p>Clicca sul pulsante per accedere alla <strong>mappa interattiva della Timpa di Acireale</strong>:</p>
+  <p style="text-align:center;"><a class="btn" href="https://tlweb.it/unict/progetti/acireale/mappatura" target="_blank">🌍 Vai alla mappa interattiva</a></p>
+
   <div class="qr-container">
     <h3>Oppure scansiona il QR Code</h3>
     <div id="qrcode"></div>
@@ -116,16 +130,14 @@
 <section id="galleria">
   <h2>Galleria multimediale</h2>
   <div class="media-grid">
-
     <div class="media-item">
-      <a href="https://youtu.be/6hh93bZrAmY?si=s4E9J04Og10VC_U0" target="_blank" class="btn">
-        🎥 Guarda il video racconto "La nostra Timpa"
-      </a>
+      <a href="https://youtu.be/6hh93bZrAmY?si=s4E9J04Og10VC_U0" target="_blank" class="btn">🎥 Guarda il video racconto "La nostra Timpa"</a>
     </div>
 
     <div class="media-item">
       <video controls>
         <source src="https://raw.githubusercontent.com/custodiamolatimpaconunclick-dotcom/custodiamolatimpaconunclick/main/Trailer%20consorzio%20acque%20santa%20tecla.mp4" type="video/mp4">
+        Il tuo browser non supporta il tag video.
       </video>
       <p><strong>Trailer – Consorzio Acque Santa Tecla</strong></p>
     </div>
@@ -133,10 +145,10 @@
     <div class="media-item">
       <video controls>
         <source src="https://raw.githubusercontent.com/custodiamolatimpaconunclick-dotcom/custodiamolatimpaconunclick/main/Esplorazione%20galleria%20Miuccio.mp4" type="video/mp4">
+        Il tuo browser non supporta il tag video.
       </video>
       <p><strong>Esplorazione galleria Miuccio</strong></p>
     </div>
-
   </div>
 </section>
 
@@ -198,10 +210,12 @@
       const event = eventData.find(e => e.date===fullDate);
       if(event){
         div.classList.add("event");
+
         const descEl = document.createElement("div");
         descEl.className="event-desc";
         descEl.textContent = event.title;
         div.appendChild(descEl);
+
         div.addEventListener("click", ()=>showEvent(event));
       }
       calendar.appendChild(div);
